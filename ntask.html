@@ -1,0 +1,745 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr 29 06:04:01 2021
+
+@author: rgctisvccapu01
+"""
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/bootstrap.min.css') }}">-->
+
+    <!--<link rel="stylesheet" href="C://Users//rgctisvccapu01//Desktop//crud_flask_app//static//stylesheets//tracker.css" >-->
+    <!-- <link rel="stylesheet" href="stylesheets/tracker.css" > -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/tracker.css') }}">-->
+    <!--<link rel="stylesheet" href="C://Users//rgctisvccapu01//Desktop//crud_flask_app//static//stylesheets//tracker.css" >-->
+    
+    
+    
+    <title>TaskTracker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTables").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+    
+</head>
+<body>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <nav class="navbar navbar-dark fixed-top bg-primary flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Citi Bank</a>
+      <input type="text" class="form-control form-control-primary w-100" placeholder="Search..." >
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Logout</a>
+        </li>
+      </ul>
+
+ 
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+      <!-- Sidear -->
+      </div>
+    </div>
+    <div class="col-md-2 bg-light d-none d-md-block sidebar">
+      <div class="left-sidebar">
+      <ul class="nav flex-column sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">
+          <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
+          Tasks
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
+          Dashboards
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
+          Forecast
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
+        Reports
+        </a>
+      </li>
+    </ul>
+  
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+{% block body %}
+
+<div class="container" style="margin-top:-40px">
+    <div class="row">
+        <!--<div class="col-md-2" style="margin-top:-20px;margin-left :-120px">
+          <input type ="text" name="From" id="From" class="form-control" placeholder="From Date"/>
+        </div>
+        <div class="col-md-2" style="margin-top:-20px;margin-left:-20px">
+          <input type ="text" name="to" id="to" class="form-control" placeholder="To Date"/>
+        </div>
+        <div class="col-md-8" style="margin-top:-15px;margin-left:-15px">
+          <input type ="button" name="range" id="range", value="Range" class="btn-btn-success"/>
+        </div>
+        <div class="col-md-2" style="margin-top:-20px;margin-left :-10px">
+        
+        </div>-->
+        <div class="col md-16">
+        
+
+            <div class="jumbotron p-3" style="width: 1100px" style="margin-left:-130px;margin-right:-40px">
+            
+            
+               
+               <h2>Manage <b>Tasks </b> 
+               <div style="float:right;margin-top:-10px">
+                <button type="button"  class="btn btn-success"
+                data-toggle="modal" data-target="#mymodal" style="margin-right:05px;">Add New Tasks
+                </button> 
+               
+                <button type="button"  class="btn btn-success">View Tasks</button>
+                </div>
+                 </h2>
+
+
+               {% with messages = get_flashed_messages() %}
+
+               {% if messages %} 
+
+               {% for message in messages %}
+
+                <div class="alert alert-success alert-dismissable" role="alert">
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+
+                        <span aria-hidden="true">x</span>
+
+                    </button>
+
+
+               {{message}}
+
+
+                </div>
+
+
+              {% endfor %}
+
+              {% endif %}
+              {% endwith %} 
+                
+    <div style="overflow:auto" >
+   
+       
+                    <!--<table id="myTable" class="display" style="overflow:auto" >-->
+                    <table id="myTable" class="table table-hover table-dark" style="overflow:auto" >
+                    <thead>
+                    <tr>
+                        <th style="width: 100%">Action</th>
+                        <th>id</th>
+                        <th>Date</th>
+                        <th>Month</th>
+                        <th>JIRA_URL</th>
+                        <th>Task</th>
+                        <th>Deliverable</th>
+                        <th>Dashboard_URL</th>
+                        <th>BusinessValue</th>
+                        <th>Stakeholders</th>
+                        <th>Designation</th>
+                      
+                       
+                     
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                  {% for row in tasks %}
+                    <tr style = "width:100px">
+                     <td>
+                        <div style="width:130px">
+                      
+                            <!-- <a href="/update/{{row.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>
+                            <a href="/delete/{{row.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a> -->
+                            <a href="/update/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.0}}" >Edit</a>
+                            <a href="/delete/{{row.0}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+                        </div>
+                       
+                        </td>
+                        
+                        <td>{{row.0}}</td>
+                        <td>{{row.1}}</td>
+                        <td>{{row.2}}</td>
+                        <td>{{row.3}}</td>
+                        <td>{{row.4}}</td>
+                        <td>{{row.5}}</td>
+                        <td>{{row.6}}</td>
+                        <td>{{row.7}}</td>
+                        <td>{{row.8}}</td>
+                        <td>{{row.9}}</td>
+                      
+                
+                  
+                    </tr>
+                    
+                
+            
+                  <!-- Modal Edit Employee-->
+<!-- <div id="modaledit{{row.id}}" class="modal fade" role="dialog"> -->
+<div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+
+
+      <div class="modal-content">
+
+
+         <div class="modal-header">
+
+
+            <h4 class="modal-title">Update Information</h4>
+
+
+         </div>
+
+
+         <div class="modal-body">
+
+
+            <form action="{{url_for('update')}}" method="POST">
+
+
+              <div class="form-group">
+
+               <!--<div class="form-group">
+
+
+                  <label>Action:</label>
+
+                  <input type="text" class="form-control" name="Action" value="{{row.10}}">
+
+
+             
+               </div>-->
+               <div class="form-group">
+                <label>id:</label>
+                  <!-- <input type="hidden"  name="id" value="{{row.0}}">-->
+
+                  <input type="text" class="form-control" name="id" value="{{row.0}}">
+            
+
+               </div>
+               
+
+
+               <div class="form-group">
+
+
+                  <label>Date:</label>
+
+                  <input type="text" class="form-control" name="Date" value="{{row.1}}">
+
+
+               </div>
+
+
+               <div class="form-group">
+
+
+                  <label>Month:</label>
+
+                  <input type="text" class="form-control" name="Month" value="{{row.2}}">
+
+
+               </div>
+               
+               <div class="form-group">
+
+
+                  <label>JIRA_URL:</label>
+
+                  <input type="text" class="form-control" name="JIRA_URL" value="{{row.3}}">
+
+
+               </div>
+               
+               <div class="form-group">
+
+
+                  <label>Task:</label>
+
+                  <input type="text" class="form-control" name="Task" value="{{row.4}}">
+
+
+               </div>
+               
+               <div class="form-group">
+
+
+                  <label>Deliverable:</label>
+
+                  <input type="text" class="form-control" name="Deliverable" value="{{row.5}}">
+
+
+               </div>
+               
+               <div class="form-group">
+
+
+                  <label>Dashboard_URL:</label>
+
+                  <input type="text" class="form-control" name="Dashboard_URL" value="{{row.6}}">
+
+
+               </div>
+               
+               <div class="form-group">
+
+
+                  <label>BusinessValue:</label>
+
+                  <input type="text" class="form-control" name="BusinessValue" value="{{row.7}}">
+
+
+               </div>
+               
+                  
+               <div class="form-group">
+
+
+                  <label>Stakeholders:</label>
+
+                  <input type="text" class="form-control" name="Stakeholders" value="{{row.8}}">
+
+
+               </div>
+               
+               <div class="form-group">
+
+
+                  <label>Designation:</label>
+
+                  <input type="text" class="form-control" name="Designation" value="{{row.9}}">
+
+
+               </div>
+               
+               
+            
+               
+
+
+               <div class="form-group">
+
+
+                  <button class="btn btn-primary" type="submit">Update</button>
+
+
+               </div>
+               
+               
+               
+               
+               
+               
+                
+
+            </form>
+
+
+         </div>
+
+
+         <div class="modal-footer">
+
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+
+         </div>
+
+
+      </div>
+
+
+   </div>
+
+</div>
+
+
+    {% endfor %}
+
+
+
+
+
+
+
+
+                 
+
+</tbody>
+                </table>
+                
+    </div>
+
+            </div>
+            
+            </div>
+            </div>
+            
+
+
+
+                  <!-- Modal Add Employee-->
+
+
+<div id="mymodal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+
+            <h4 class="modal-title">Add Task</h4>
+         </div>
+         <div class="modal-body">
+
+            <form action="{{url_for('insert')}}" method="POST">
+
+
+              
+               
+               
+              <!-- <div class="form-group">
+
+                  <label>id:</label>
+                  <input type="text" class="form-control" name="id" required="1">
+
+
+               </div> -->
+               
+               <div class="form-group">
+
+                  <label>Date:</label>
+                  <input type="text" class="form-control" name="Date" required="1">
+
+
+               </div>
+
+
+                <div class="form-group">
+
+
+                  <label>Month:</label>
+                  <input type="text" class="form-control" name="Month" required="1">
+
+
+               </div>
+
+
+                <div class="form-group">
+
+
+                  <label>JIRA_URL:</label>
+                  <input type="text" class="form-control" name="JIRA_URL" required="1">
+
+
+               </div>
+               
+               
+                <div class="form-group">
+
+
+                  <label>TASK:</label>
+                  <input type="text" class="form-control" name="Task" required="1">
+
+
+               </div>
+               
+               
+                <div class="form-group">
+
+
+                  <label>Deliverable:</label>
+                  <input type="text" class="form-control" name="Deliverable" required="1">
+
+
+               </div>
+               
+               
+                <div class="form-group">
+
+
+                  <label>Dashboard_URL:</label>
+                  <input type="text" class="form-control" name="Dashboard_URL" required="1">
+
+
+               </div>
+               
+                <div class="form-group">
+
+
+                  <label>BusinessValue:</label>
+                  <input type="text" class="form-control" name="BusinessValue" required="1">
+
+
+               </div>
+               
+                <div class="form-group">
+
+
+                  <label>Stakeholders:</label>
+                  <input type="text" class="form-control" name="Stakeholders" required="1">
+
+
+               </div>
+               
+               <div class="form-group">
+
+
+                  <label>Designation:</label>
+                  <input type="text" class="form-control" name="Designation" required="1">
+
+
+               </div>
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+
+
+
+               <div class="form-group">
+
+
+                  <button class="btn btn-primary" type="submit">Add Tasks</button>
+
+
+               </div>
+
+
+            </form>
+
+
+         </div>
+
+
+         <div class="modal-footer">
+
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+
+         </div>
+
+
+      </div>
+
+
+   </div>
+
+
+</div>
+
+
+
+
+
+     
+
+
+</div>
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+{% endblock %}
+    
+
+
+<main role="main" class="col-md-12 ml-sm-auto col-lg-10 px-4"></main>
+  
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+    
+  <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+  
+  
+
+
+
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+    
+<!--<script>
+$(document).ready(function(){
+    $.datepicker.setDefaults({
+        dateFormat: "mm/dd/yy"
+    });
+    $(function(){ 
+        $("#From").datepicker();
+        $("#to").datepicker();
+    });
+    $('#range').click(function(){
+        var From = $('#From').val();
+        var to = $('#to').val();
+        if(From != '' && to != '')
+        {
+            $.ajax({
+                url:"/range",
+                method:"POST",
+                data:{From:From, to:to},
+                success:function(data)
+                {
+                    $('#myTable').html(data);
+                    $('#myTable').append(data.htmlresponse);
+                   
+                }
+            });
+        }
+        else
+        {
+            alert("Please Select the Date");
+        }
+    });
+    
+    
+});
+ 
+ </script>-->
+
+    
+    
+   <!-- <input id="myInput" type="text" placeholder="Search..">-->
+    
+
+  
+  
+  </body>
+</html>
+
